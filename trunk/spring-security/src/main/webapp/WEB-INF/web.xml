@@ -5,6 +5,35 @@
 <web-app>
   <display-name>Spring Security Webapp</display-name>
   
+    <!--
+       Parámetro que indica el lugar de los ficheros XML que cargará el contexto de Spring (ContextLoaderListener).
+    -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            WEB-INF\applicationContext-security.xml
+        </param-value>
+    </context-param>
+
+    <!--
+        Carga el context de aplicación al arrancar la aplicación. El contexto
+        de la aplicación está disponible mediante WebApplicationContextUtils.getWebApplicationContext(servletContext).
+    -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+  
   	<servlet>
         <servlet-name>spring-security</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
