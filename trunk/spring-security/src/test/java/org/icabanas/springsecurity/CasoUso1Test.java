@@ -21,11 +21,11 @@ public class CasoUso1Test extends BaseTest{
 		
 	@Test
 	public void deberiaIrALaPaginaDeLoginDeSpringSiElUsuarioIntentaIrAUnRecursoSeguroYNoEstaAutenticado(){
-		driver.get("http://localhost:9080/spring-security/home.htm");
+        driver.get("http://localhost:9080/spring-security/home.htm");
 
         assertThat(driver.getTitle(),
                 is(not("Home: Spring Security Web Application")));
         assertThat(driver.getTitle(),
-        		is("Login: Spring Security Web Application"));
-	}
+                is("Login Page"));
+    }
 }
