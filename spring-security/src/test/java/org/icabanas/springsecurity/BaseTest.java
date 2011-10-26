@@ -4,11 +4,14 @@ package org.icabanas.springsecurity;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.icabanas.springsecurity.selenium.WebDriverCliente;
+import org.icabanas.springsecurity.selenium.WebDriverParaFireFoxFactory;
+import org.icabanas.springsecurity.selenium.WebDriverParaIEFactory;
 import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 
 /**
  * Clase que contiene m�todos de utilidad para la ejecuci�n de tests.
@@ -18,8 +21,16 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
  */
 public abstract class BaseTest {
 
-	//protected final WebDriver driver = new InternetExplorerDriver();
-	protected final WebDriver driver = new InternetExplorerDriver();
+	protected WebDriver driver = null;
+	
+	@Before
+	public void antesDeCadaTest(){
+		String sSistemaOperativo = System.getProperty("os.name");
+		if(sSistemaOperativo.equals("Linux"))
+			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaFireFoxFactory());
+		else
+			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaIEFactory());
+	}
 	
 	@After
 	public void despuesDeCadaTest(){
