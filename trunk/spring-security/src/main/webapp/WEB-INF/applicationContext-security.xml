@@ -10,7 +10,7 @@
 	<http auto-config="true">
         <intercept-url pattern="/login.jsp" filters="none" />
         <intercept-url pattern="/**" access="ROLE_USER" />
-        <form-login login-page="/login.jsp" default-target-url="home.htm"
+        <form-login login-page="/login.jsp" default-target-url="/home.htm"
           always-use-default-target="true" />
     </http>
 
