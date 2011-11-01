@@ -6,6 +6,7 @@
 <title>Admin: Spring Security Web Application</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/navegacion.jsp" %>
 Admin page: only administrative users should see this page.
 </body>
 </html>

@@ -30,16 +30,7 @@ public abstract class BaseTest {
 	
 	@Before
 	public void antesDeCadaTest(){
-		NavigatorEnum testNavigator = NavigatorEnum.getEnumByCodigo(getProperty("test.navigator"));
-		switch (testNavigator) {
-		case INTERNET_EXPLORER:
-			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaIEFactory());
-			break;
-		case FIREFOX:
-			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaFireFoxFactory());
-		default:
-			break;
-		}
+		driver = getDriver();
 	}
 	
 	/**
@@ -101,7 +92,7 @@ public abstract class BaseTest {
 	 * @param usuario
 	 * @param password
 	 */
-	private void autenticarUsuario(String usuario,String password){
+	protected void autenticarUsuario(String usuario,String password){
 		if(driver != null){
 			// obtengo los campos username y password del formulario
 			final WebElement usernameField = driver.findElement(By.name("j_username"));
@@ -116,4 +107,18 @@ public abstract class BaseTest {
 		}
 	}
 	
+	protected WebDriver getDriver(){
+		WebDriver driver = null;
+		NavigatorEnum testNavigator = NavigatorEnum.getEnumByCodigo(getProperty("test.navigator"));
+		switch (testNavigator) {
+		case INTERNET_EXPLORER:
+			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaIEFactory());
+			break;
+		case FIREFOX:
+			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaFireFoxFactory());
+		default:
+			break;
+		}
+		return driver;
+	}
 }

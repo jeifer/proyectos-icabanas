@@ -10,6 +10,8 @@
 .errormessage {
    color:red;
 }
+.successmessage {
+}
 </style>
 </head>
 
@@ -19,6 +21,11 @@
 <c:if test="${not empty param.authfailed}">
     <span id="infomessage" >
     Login fallido debido a: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+    </span>
+</c:if>
+<c:if test="${not empty param.loggedout}">
+    <span id="infomessage">
+    Se ha desconectado del sistema correctamente.
     </span>
 </c:if>
         <table>

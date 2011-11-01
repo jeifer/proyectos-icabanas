@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<%@ include file="/WEB-INF/jsp/navegacion.jsp" %>
 Página de inicio: solo usuarios autenticados podrán acceder a esta página.
 
 </body>
