@@ -4,6 +4,11 @@ package org.icabanas.springsecurity;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+
+import org.icabanas.springsecurity.selenium.NavigatorEnum;
 import org.icabanas.springsecurity.selenium.WebDriverCliente;
 import org.icabanas.springsecurity.selenium.WebDriverParaFireFoxFactory;
 import org.icabanas.springsecurity.selenium.WebDriverParaIEFactory;
@@ -25,13 +30,37 @@ public abstract class BaseTest {
 	
 	@Before
 	public void antesDeCadaTest(){
-		String sSistemaOperativo = System.getProperty("os.name");
-		if(sSistemaOperativo.equals("Linux"))
-			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaFireFoxFactory());
-		else
+		NavigatorEnum testNavigator = NavigatorEnum.getEnumByCodigo(getProperty("test.navigator"));
+		switch (testNavigator) {
+		case INTERNET_EXPLORER:
 			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaIEFactory());
+			break;
+		case FIREFOX:
+			driver = WebDriverCliente.obtenerWebDriver(new WebDriverParaFireFoxFactory());
+		default:
+			break;
+		}
 	}
 	
+	/**
+	 * Método que devuelve la propiedad <code>property</code> del fichero de propiedades test.properties
+	 * @param string
+	 * @return
+	 */
+	private String getProperty(String property) {
+		String valueProperty = null;
+		Properties props = new Properties();
+		URL url = ClassLoader.getSystemResource("test.properties");
+		try{
+			props.load(url.openStream());
+			valueProperty = props.getProperty(property);
+		}
+		catch (IOException e) {
+			// TODO: handle exception
+		}
+		return valueProperty;
+	}
+
 	@After
 	public void despuesDeCadaTest(){
 		// cierra el navegador firefox que se abriï¿½ despuï¿½s de cada test.

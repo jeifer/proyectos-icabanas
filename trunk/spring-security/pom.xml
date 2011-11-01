@@ -7,8 +7,39 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>spring-security Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+  <profiles>
+  	<profile>
+      <id>test-ie</id>
+      <activation>
+      	<activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+      	<test.navigator>ie</test.navigator>
+      </properties>
+    </profile>
+    <profile>
+      <id>test-ff</id>
+      <properties>
+      	<test.navigator>ff</test.navigator>
+      </properties>
+    </profile>
+    <profile>
+      <id>test-ch</id>
+      <properties>
+      	<test.navigator>ch</test.navigator>
+      </properties>
+    </profile>    
+  </profiles>
+  
   <build>
     <finalName>spring-security</finalName>
+    <testResources>
+    	<testResource>
+    		<directory>src/test/resources</directory>
+    		<filtering>true</filtering>
+    	</testResource>
+    </testResources>
     <plugins>
         <plugin>
               <groupId>org.apache.maven.plugins</groupId>
@@ -17,7 +48,8 @@
               <configuration>
                   <source>1.6</source>
                   <target>1.6</target>
-                  <encoding>UTF-8</encoding>
+                  <!-- <encoding>UTF-8</encoding> -->
+                  <encoding>ISO-8859-1</encoding>
                   <optimize>true</optimize>
               </configuration>
           </plugin>
