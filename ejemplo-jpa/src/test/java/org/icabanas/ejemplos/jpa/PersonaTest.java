@@ -6,31 +6,9 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
-public class PersonaTest {
-
-	private EntityManagerFactory emf;
-	
-	private EntityManager em;
-	
-	@Before
-	public void antesDeCadaTest(){
-		emf = Persistence.createEntityManagerFactory("ejemploJPAPersistenceUnit");
-		em = emf.createEntityManager();
-	}
-	
-	@After
-	public void despuesDeCadaTest(){
-		em.close();
-		emf.close();
-	}
+public class PersonaTest extends BaseTest {			
 	
 	@Test
 	public void deberiaInsertarPersonaYRecuperarla(){
@@ -50,7 +28,7 @@ public class PersonaTest {
         assertEquals(1, list.size());
         for (Persona actual : list) {
             final String nombre = actual.getNombre();
-            assertEquals("Ismael", actual.getNombre());
+            assertEquals("Ismael", nombre);
         }
 		
 	}
@@ -76,7 +54,7 @@ public class PersonaTest {
         assertEquals(1, list.size());
         for (Persona actual : list) {
             final String nombre = actual.getNombre();
-            assertEquals("Antonio", actual.getNombre());
+            assertEquals("Antonio", nombre);
         }
 		
 	}
@@ -126,6 +104,8 @@ public class PersonaTest {
 
 	private Persona creaPersona(String nombre, String apellidos, Date fechaNacimiento,
 			String direccion, String codigoPostal, String poblacion, String provincia) {
-		return new Persona(nombre,apellidos,fechaNacimiento,direccion,codigoPostal,poblacion,provincia);
+		Direccion direccionPersona = new Direccion(direccion, codigoPostal, poblacion, provincia);
+		
+		return new Persona(nombre,apellidos,fechaNacimiento,direccionPersona,Genero.HOMBRE);
 	}
 }

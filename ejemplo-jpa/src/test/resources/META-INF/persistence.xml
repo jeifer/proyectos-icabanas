@@ -11,6 +11,8 @@
         	si en un futuro se usa otro proveedor que no detecte automáticamente las clases persistentes.
         -->              
         <class>org.icabanas.ejemplos.jpa.Persona</class>
+        <class>org.icabanas.ejemplos.jpa.pks.compuesta.Contacto</class>
+        <class>org.icabanas.ejemplos.jpa.pks.compuesta.Proyecto</class>
                       
         <properties>
             <property name="hibernate.show_sql" value="true" />

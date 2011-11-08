@@ -3,8 +3,13 @@ package org.icabanas.ejemplos.jpa;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,42 +25,38 @@ public class Persona implements Serializable {
 	private Integer id;
 	
 	@Column(name="NOMBRE",length=25,nullable=false)
+	@Basic(optional=false)
 	private String nombre;
 	
 	@Column(name="APELLIDOS",length=50,nullable=false)
+	@Basic(optional=false)
 	private String apellidos;
 	
 	@Column(name="FECHA_NACIMIENTO",nullable=false)
+	@Basic(optional=false)
 	private Date fechaNacimiento;
 	
 	@Transient
 	private int edad;
 	
-	@Column(name="DIRECCION",length=250)
-	private String direccion;
+	@Embedded
+	@Basic(optional=true)
+	private Direccion direccion;
 	
-	@Column(name="CODIGO_POSTAL",length=5)
-	private String codigoPostal;
-	
-	@Column(name="POBLACION",length=250)
-	private String poblacion;
-	
-	@Column(name="PROVINCIA",length=25)
-	private String provincia;
+	@Enumerated(EnumType.STRING)
+	@Column(name="GENERO")
+	@Basic(optional=false)
+	private Genero genero;
 	
 	public Persona(){}
 
-	public Persona(String nombre, String apellidos, Date fechaNacimiento,
-			String direccion, String codigoPostal, String poblacion,
-			String provincia) {
+	public Persona(String nombre, String apellidos, Date fechaNacimiento, Direccion direccion, Genero genero) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
 		this.direccion = direccion;
-		this.codigoPostal = codigoPostal;
-		this.poblacion = poblacion;
-		this.provincia = provincia;
+		this.genero = genero;
 	}
 
 
@@ -100,36 +101,23 @@ public class Persona implements Serializable {
 		this.edad = edad;
 	}
 
-	public String getDireccion() {
+	public Direccion getDireccion() {
 		return direccion;
 	}
 
-	public void setDireccion(String direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
 
-	public String getCodigoPostal() {
-		return codigoPostal;
+	public Genero getGenero() {
+		return genero;
 	}
 
-	public void setCodigoPostal(String codigoPostal) {
-		this.codigoPostal = codigoPostal;
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 
-	public String getPoblacion() {
-		return poblacion;
-	}
-
-	public void setPoblacion(String poblacion) {
-		this.poblacion = poblacion;
-	}
-
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
+	
+	
 	
 }
