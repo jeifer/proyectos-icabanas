@@ -6,13 +6,11 @@
     <persistence-unit name="ejemploJPAPersistenceUnit" 
                       transaction-type="RESOURCE_LOCAL">
                       
-        <!-- Dependiendo del proveedor JPA que se use es necesario o no incluir las clases persistentes. En el caso
-        	de que se use Hibernate como proveedor JPA no es necesario, pero es una buena práctica incluirlo por 
-        	si en un futuro se usa otro proveedor que no detecte automáticamente las clases persistentes.
-        -->              
-        <class>org.icabanas.ejemplos.jpa.Persona</class>
-        <class>org.icabanas.ejemplos.jpa.pks.compuesta.Contacto</class>
-        <class>org.icabanas.ejemplos.jpa.pks.compuesta.Proyecto</class>
+        <!-- Si JPA se ejecuta en un entorno gestionado, un contenedor J2EE, no es necesario especificar 
+             las clases persistentes ya que se reconocerán automáticamente, pero si JPA se ejecuta en un
+             entorno no gestionado es necesario especificar las clases persistentes.
+        -->          
+        <class>org.icabanas.ejemplos.jpa.Persona</class>    
                       
         <properties>
             <property name="hibernate.show_sql" value="true" />
