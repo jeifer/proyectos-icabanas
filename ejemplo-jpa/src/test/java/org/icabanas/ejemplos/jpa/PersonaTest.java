@@ -18,8 +18,10 @@ public class PersonaTest extends BaseTest {
 	@Test
 	public void deberiaInsertarRecuperarPersona(){
 		// Creamos el objeto Persona
-		Persona personaA = creaPersona("Ismael", "Cabañas García", new Date(), "C/Antonio Van de Pere, 81, 2ºA", "28342", "Madrid", "Valdemoro", "Madrid");
-		Persona personaB = creaPersona("Beatríz", "Bernardino Nuño", new Date(), "C/Antonio Van de Pere, 81, 2ºA", "28342", "Madrid", "Valdemoro", "Madrid");
+		Date fechaNacimiento = new Date();
+		System.out.println(fechaNacimiento);
+		Persona personaA = creaPersona("Ismael", "Cabañas García", fechaNacimiento, "C/Antonio Van de Pere, 81, 2ºA", "28342", "Madrid", "Valdemoro", "Madrid", Genero.HOMBRE);
+		Persona personaB = creaPersona("Beatríz", "Bernardino Nuño", fechaNacimiento, "C/Antonio Van de Pere, 81, 2ºA", "28342", "Madrid", "Valdemoro", "Madrid", Genero.MUJER);
 		
 		assertEquals(null,personaA.getId());
 		assertEquals(null,personaB.getId());
@@ -38,14 +40,22 @@ public class PersonaTest extends BaseTest {
         for (Persona actual : list) {
             final String nombre = actual.getNombre();
             assertTrue(nombre.equals("Ismael") || nombre.equals("Beatríz"));
+            System.out.println("KK: " + actual.getFechaNacimiento());
         }
 		
 	}
 	
 
 	private Persona creaPersona(String nombre, String apellidos, Date fechaNacimiento,
-			String direccion, String codigoPostal, String poblacion, String localidad, String provincia) {
+			String direccion, String codigoPostal, String poblacion, String localidad, String provincia, Genero genero) {
 		
-		return new Persona(nombre,apellidos,fechaNacimiento,direccion,localidad,poblacion,provincia,codigoPostal);
+		Direccion dir = new Direccion(direccion, localidad, poblacion, provincia, codigoPostal);
+		Persona per = new Persona(nombre, apellidos, fechaNacimiento, dir, genero);
+		return per;
+	}
+	
+	private Direccion creaDireccion(String direccion, String codigoPostal, String poblacion, String localidad, String provincia){
+		Direccion dir = new Direccion(direccion, localidad, poblacion, provincia, codigoPostal);
+		return dir;
 	}
 }

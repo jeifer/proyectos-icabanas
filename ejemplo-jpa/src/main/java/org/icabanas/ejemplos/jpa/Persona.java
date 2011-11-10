@@ -3,11 +3,20 @@ package org.icabanas.ejemplos.jpa;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="ICG_PERSONA")
@@ -24,37 +33,33 @@ public class Persona implements Serializable {
 	private String apellidos;
 	
 	@Column(name="FECHA_NACIMIENTO",nullable=false)
+	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 
-	@Column(name="DIRECCION",length=250,nullable=false)
-	private String direccion;
+	@Embedded
+	private Direccion direccion;
 	
-	@Column(name="LOCALIDAD",length=50,nullable=false)
-	private String localidad;
+	@Enumerated(EnumType.STRING)
+	private Genero genero;
 	
-	@Column(name="POBLACION",length=150,nullable=false)
-	private String poblacion;
+	@Transient
+	private int edad;
 	
-	@Column(name="PROVINCIA",length=150,nullable=false)
-	private String provincia;
-	
-	@Column(name="CODIGO_POSTAL",length=5,nullable=false)
-	private String codigoPostal;
+	@Basic(fetch=FetchType.LAZY,optional=true)
+	@Column(name="FOTOGRAFIA")
+	@Lob
+	private byte[] foto;
 	
 	public Persona(){}
 
 	public Persona(String nombre, String apellidos, Date fechaNacimiento,
-			String direccion, String localidad, String poblacion,
-			String provincia, String codigoPostal) {
+			Direccion direccion, Genero genero) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
 		this.direccion = direccion;
-		this.localidad = localidad;
-		this.poblacion = poblacion;
-		this.provincia = provincia;
-		this.codigoPostal = codigoPostal;
+		this.genero = genero;
 	}
 
 	public Integer getId() {
@@ -89,45 +94,40 @@ public class Persona implements Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public String getDireccion() {
+	public Direccion getDireccion() {
 		return direccion;
 	}
 
-	public void setDireccion(String direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
 
-	public String getLocalidad() {
-		return localidad;
-	}
 
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
-	}
-
-	public String getPoblacion() {
-		return poblacion;
-	}
-
-	public void setPoblacion(String poblacion) {
-		this.poblacion = poblacion;
-	}
-
-	public String getCodigoPostal() {
-		return codigoPostal;
-	}
-
-	public void setCodigoPostal(String codigoPostal) {
-		this.codigoPostal = codigoPostal;
+	public Genero getGenero() {
+		return genero;
 	}
 
 
-	public String getProvincia() {
-		return provincia;
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 
+	public int getEdad() {
+		return edad;
+	}
 
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}	
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+
+	
+	
 }
