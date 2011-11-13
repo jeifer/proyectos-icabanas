@@ -3,11 +3,18 @@ package org.icabanas.ejemplos.jpa;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Embeddable
+@Entity
+@Table(name="ICG_DIRECCION")
 @Access(AccessType.PROPERTY)
 public class Direccion {
+	
+	private Integer id;
+	
 	private String direccion;
 	
 	private String localidad;
@@ -17,7 +24,7 @@ public class Direccion {
 	private String provincia;
 	
 	private String codigoPostal;
-
+	
 	public Direccion() {
 	}
 
@@ -75,7 +82,15 @@ public class Direccion {
 	public void setCodigoPostal(String codigoPostal) {
 		this.codigoPostal = codigoPostal;
 	}
-	
-	
-	
+
+	@Id
+	@GeneratedValue
+	@Column(name="ID_DIRECCION")
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 }
