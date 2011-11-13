@@ -5,14 +5,15 @@ import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +25,7 @@ public class Persona implements Serializable {
 
 	@Id
 	@GeneratedValue
+	@Column(name="ID_PERSONA")
 	private Integer id;
 	
 	@Column(name="NOMBRE",length=25,nullable=false)
@@ -36,7 +38,8 @@ public class Persona implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 
-	@Embedded
+	@OneToOne(fetch=FetchType.LAZY)	
+	@JoinColumn(name="ID_DIRECCION")
 	private Direccion direccion;
 	
 	@Enumerated(EnumType.STRING)
@@ -52,14 +55,21 @@ public class Persona implements Serializable {
 	
 	public Persona(){}
 
+	
 	public Persona(String nombre, String apellidos, Date fechaNacimiento,
-			Direccion direccion, Genero genero) {
+			Genero genero) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
-		this.direccion = direccion;
 		this.genero = genero;
+	}
+
+
+	public Persona(String nombre, String apellidos, Date fechaNacimiento,
+			Direccion direccion, Genero genero) {
+		this(nombre,apellidos,fechaNacimiento,genero);
+		this.direccion = direccion;
 	}
 
 	public Integer getId() {

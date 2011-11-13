@@ -10,7 +10,10 @@
              las clases persistentes ya que se reconocerán automáticamente, pero si JPA se ejecuta en un
              entorno no gestionado es necesario especificar las clases persistentes.
         -->          
-        <class>org.icabanas.ejemplos.jpa.Persona</class>    
+        <class>org.icabanas.ejemplos.jpa.Persona</class>
+        <class>org.icabanas.ejemplos.jpa.Direccion</class>
+        <class>org.icabanas.ejemplos.jpa.Biblioteca</class>  
+        <class>org.icabanas.ejemplos.jpa.Libro</class>      
                       
         <properties>
             <property name="hibernate.show_sql" value="true" />
