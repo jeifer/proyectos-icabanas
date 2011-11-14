@@ -13,7 +13,8 @@
         <class>org.icabanas.ejemplos.jpa.Persona</class>
         <class>org.icabanas.ejemplos.jpa.Direccion</class>
         <class>org.icabanas.ejemplos.jpa.Biblioteca</class>  
-        <class>org.icabanas.ejemplos.jpa.Libro</class>      
+        <class>org.icabanas.ejemplos.jpa.Libro</class>
+        <class>org.icabanas.ejemplos.jpa.Copia</class>      
                       
         <properties>
             <property name="hibernate.show_sql" value="true" />
