@@ -1,14 +1,18 @@
 package org.icabanas.ejemplos.jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +38,9 @@ public class Libro implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.EAGER,optional=false)
 	private Biblioteca biblioteca;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="libro")
+	private List<Copia> copiasDeLibro = new ArrayList<Copia>();
 
 	public Libro() {}
 
@@ -83,4 +90,20 @@ public class Libro implements Serializable {
 	public void setBiblioteca(Biblioteca biblioteca) {
 		this.biblioteca = biblioteca;
 	}
+
+	public List<Copia> getCopiasDeLibro() {
+		return copiasDeLibro;
+	}
+
+	public void setCopiasDeLibro(List<Copia> copiasDeLibro) {
+		this.copiasDeLibro = copiasDeLibro;
+	}
+	
+	public void addCopiaDeLibro(Copia copia){
+		this.copiasDeLibro.add(copia);
+		if(copia.getLibro() != this)
+			copia.setLibro(this);
+	}
+	
+	
 }
