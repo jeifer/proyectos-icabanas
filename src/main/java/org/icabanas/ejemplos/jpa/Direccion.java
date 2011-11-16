@@ -1,7 +1,5 @@
 package org.icabanas.ejemplos.jpa;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,44 +8,45 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ICG_DIRECCION")
-@Access(AccessType.PROPERTY)
 public class Direccion {
 	
-	private Integer id;
+	@Id
+	@GeneratedValue
+	@Column(name="ID_DIRECCION")
+	private Long id;
 	
-	private String direccion;
+	@Column(name="DIRECCION",length=250,nullable=false)
+	private String direccionVivienda;
 	
+	@Column(name="LOCALIDAD",length=50,nullable=false)
 	private String localidad;
 	
-	private String poblacion;
-	
+	@Column(name="PROVINCIA",length=150,nullable=false)
 	private String provincia;
 	
+	@Column(name="CODIGO_POSTAL",length=5,nullable=false)
 	private String codigoPostal;
 	
 	public Direccion() {
 	}
 
-	public Direccion(String direccion, String localidad, String poblacion,
+	public Direccion(String direccion, String localidad,
 			String provincia, String codigoPostal) {
 		super();
-		this.direccion = direccion;
+		this.direccionVivienda = direccion;
 		this.localidad = localidad;
-		this.poblacion = poblacion;
 		this.provincia = provincia;
 		this.codigoPostal = codigoPostal;
 	}
 
-	@Column(name="DIRECCION",length=250,nullable=false)
 	public String getDireccion() {
-		return direccion;
+		return direccionVivienda;
 	}
 
 	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+		this.direccionVivienda = direccion;
 	}
 
-	@Column(name="LOCALIDAD",length=50,nullable=false)
 	public String getLocalidad() {
 		return localidad;
 	}
@@ -56,16 +55,6 @@ public class Direccion {
 		this.localidad = localidad;
 	}
 
-	@Column(name="POBLACION",length=150,nullable=false)
-	public String getPoblacion() {
-		return poblacion;
-	}
-
-	public void setPoblacion(String poblacion) {
-		this.poblacion = poblacion;
-	}
-
-	@Column(name="PROVINCIA",length=150,nullable=false)
 	public String getProvincia() {
 		return provincia;
 	}
@@ -74,7 +63,6 @@ public class Direccion {
 		this.provincia = provincia;
 	}
 
-	@Column(name="CODIGO_POSTAL",length=5,nullable=false)
 	public String getCodigoPostal() {
 		return codigoPostal;
 	}
@@ -83,14 +71,11 @@ public class Direccion {
 		this.codigoPostal = codigoPostal;
 	}
 
-	@Id
-	@GeneratedValue
-	@Column(name="ID_DIRECCION")
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 }
