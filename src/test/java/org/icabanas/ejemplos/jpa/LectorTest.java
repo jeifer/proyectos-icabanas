@@ -85,6 +85,9 @@ public class LectorTest extends BaseTest {
 		assertNull(lectorTest);
 	}
 	
+	/**
+	 * Test que comprueba cascade=PERSIST
+	 */
 	@Test
 	public void siCreamosUnaInstanciaDeLectorAsociadaNuevaInstanciaDireccionDeberiaPersistirAmbas(){
 		Lector lector = creaLectorPorDefecto();
@@ -103,6 +106,9 @@ public class LectorTest extends BaseTest {
 		assertNotNull(idDireccion);
 	}
 	
+	/**
+	 * Test que comprueba cascade=PERSIST
+	 */
 	@Test
 	public void siCreamosUnaInstanciaDeLectorAsociadaAInstanciaDireccionExistenteDeberiaPersistirLector(){
 		Lector lector = creaLectorPorDefecto();
@@ -129,6 +135,9 @@ public class LectorTest extends BaseTest {
 		assertNotNull(idDireccion);
 	}
 	
+	/**
+	 * Test que comprueba fetch=LAZY
+	 */
 	@Test(expected=LazyInitializationException.class)
 	public void cuandoRecuperoUnaInstanciaDeLectorSeProcudeErrorAlRecuperarPropiedadDeDireccionSiConexionCerrada(){
 		Lector lector = creaLectorPorDefecto();
@@ -145,6 +154,44 @@ public class LectorTest extends BaseTest {
 		emConsultas.close();
 		
 		String calleDireccion = lectorTest.getDireccion().getDireccion();
+	}
+	
+	/**
+	 * Test que comprueba cascade=REMOVE
+	 */
+	@Test
+	public void deberiaEliminarInstanciaDireccionSiEliminoElLectorAsociado(){
+		Lector lector = creaLectorPorDefecto();
+		Direccion direccion = creaDireccionPorDefecto();
+		
+		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
+		em.persist(direccion);
+		em.getTransaction().commit();
+		
+		Long idDireccion = direccion.getId();
+		assertNotNull(idDireccion);
+		
+		EntityManager em2 = getEntityManager();
+		Direccion direccion2 = em2.find(Direccion.class, direccion.getId());
+		em2.getTransaction().begin();
+		lector.setDireccion(direccion2);
+		em2.persist(lector);
+		em2.getTransaction().commit();
+		
+		Long idLector = lector.getId();
+		
+		EntityManager em3 = getEntityManager();
+		em3.getTransaction().begin();
+		Lector lectorRemove = em3.find(Lector.class, idLector);
+		em3.remove(lectorRemove);
+		em3.getTransaction().commit();
+		
+		EntityManager em4 = getEntityManager();
+		Lector lectorTest = em4.find(Lector.class, idLector);
+		assertNull(lectorTest);
+		Direccion direccionTest = em4.find(Direccion.class, idDireccion);
+		assertNull(direccionTest);
 	}
 	
 	@Override
