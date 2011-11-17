@@ -1,6 +1,7 @@
 package org.icabanas.ejemplos.jpa;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -43,4 +44,14 @@ public abstract class BaseTest {
 	}
 	
 	public abstract void inicializarDatosTest();
+	
+	protected Lector creaLectorPorDefecto() {
+		Lector lector = new Lector("Ismael", "Cabañas García", "51942403P", "696980357", new Date(), Genero.HOMBRE);
+		return lector;
+	}
+	
+	protected Direccion creaDireccionPorDefecto(){
+		Direccion direccion = new Direccion("C/Antonio Van de Pere, 81, 2ºA", "Valdemoro", "Madrid", "28342");
+		return direccion;
+	}
 }

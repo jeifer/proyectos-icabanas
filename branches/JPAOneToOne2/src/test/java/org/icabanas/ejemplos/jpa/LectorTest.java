@@ -198,15 +198,5 @@ public class LectorTest extends BaseTest {
 	public void inicializarDatosTest() {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	private Lector creaLectorPorDefecto() {
-		Lector lector = new Lector("Ismael", "Cabañas García", "51942403P", "696980357", new Date(), Genero.HOMBRE);
-		return lector;
-	}
-	
-	private Direccion creaDireccionPorDefecto(){
-		Direccion direccion = new Direccion("C/Antonio Van de Pere, 81, 2ºA", "Valdemoro", "Madrid", "28342");
-		return direccion;
-	}
+	}	
 }
