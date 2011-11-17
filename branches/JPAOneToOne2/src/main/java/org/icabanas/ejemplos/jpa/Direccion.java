@@ -2,8 +2,10 @@ package org.icabanas.ejemplos.jpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +28,9 @@ public class Direccion {
 	
 	@Column(name="CODIGO_POSTAL",length=5,nullable=false)
 	private String codigoPostal;
+	
+	@OneToOne(fetch=FetchType.LAZY,mappedBy="direccion")
+	private Lector lector;
 	
 	public Direccion() {
 	}
@@ -78,4 +83,14 @@ public class Direccion {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public Lector getLector() {
+		return lector;
+	}
+
+	public void setLector(Lector lector) {
+		this.lector = lector;
+	}
+	
+	
 }
