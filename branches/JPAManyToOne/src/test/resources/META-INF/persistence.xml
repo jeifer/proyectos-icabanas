@@ -12,6 +12,8 @@
         -->          
         <class>org.icabanas.ejemplos.jpa.Lector</class>
         <class>org.icabanas.ejemplos.jpa.Direccion</class>
+        <class>org.icabanas.ejemplos.jpa.Biblioteca</class>
+        <class>org.icabanas.ejemplos.jpa.Libro</class>
                       
         <properties>
             <property name="hibernate.show_sql" value="true" />
