@@ -11,6 +11,18 @@ import com.opensymphony.xwork2.ActionSupport;
 public class EjemploCatalogoProductosAction {
 
 	public String ejemplo1(){
+		return _ejemplo();
+	}
+	
+	public String ejemplo2(){
+		return _ejemplo();
+	}
+	
+	public String ordenacion(){
+		return _ejemplo();
+	}
+
+	private String _ejemplo() {
 		List<Producto> productos = getProductos();
 		
 		ServletActionContext.getRequest().setAttribute("productos", productos);

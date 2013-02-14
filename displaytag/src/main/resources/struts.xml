@@ -29,6 +29,14 @@
 				method="ejemplo1"> 
 			<result name="success">/WEB-INF/jsp/catalogos/productos/ejemplo1.jsp</result> 
 		</action>
+		<action name="ejemplo2" class="org.icabanas.ejemplos.displaytag.web.actions.EjemploCatalogoProductosAction" 
+				method="ejemplo2"> 
+			<result name="success">/WEB-INF/jsp/catalogos/productos/ejemplo2.jsp</result> 
+		</action>
+		<action name="ordenacion" class="org.icabanas.ejemplos.displaytag.web.actions.EjemploCatalogoProductosAction" 
+				method="ordenacion"> 
+			<result name="success">/WEB-INF/jsp/catalogos/productos/ordenacion.jsp</result> 
+		</action>
 	</package> 
 	
 </struts>
