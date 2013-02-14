@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+	"http://struts.apache.org/dtds/struts-2.0.dtd"> 
+
+<struts> 
+	<!-- El tag constant nos permite sobreescribir la propiedades que incluimos en struts.properties -->
+	<constant name="struts.devMode" value="true" /> 				
+	
+	<package name="default" extends="struts-default">
+				
+		<global-results>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+	</package>
+	
+	<package name="index" namespace="/" extends="default">		
+		<action name="">
+			<result>index.jsp</result>
+		</action>
+	</package>
+	 	
+	<package name="catalogoproducto" namespace="/catalogos/producto" extends="default">																	
+		<action name="ejemplo1" class="org.icabanas.ejemplos.displaytag.web.actions.EjemploCatalogoProductosAction" 
+				method="ejemplo1"> 
+			<result name="success">/WEB-INF/jsp/catalogos/productos/ejemplo1.jsp</result> 
+		</action>
+		<action name="ejemplo2" class="org.icabanas.ejemplos.displaytag.web.actions.EjemploCatalogoProductosAction" 
+				method="ejemplo2"> 
+			<result name="success">/WEB-INF/jsp/catalogos/productos/ejemplo2.jsp</result> 
+		</action>
+		<action name="ordenacion" class="org.icabanas.ejemplos.displaytag.web.actions.EjemploCatalogoProductosAction" 
+				method="ordenacion"> 
+			<result name="success">/WEB-INF/jsp/catalogos/productos/ordenacion.jsp</result> 
+		</action>
+	</package> 
+	
+</struts>
