@@ -4,6 +4,7 @@
 <c:url value="/catalogos/producto/ejemplo2" var="urlEjemplo2" />
 <c:url value="/catalogos/producto/ordenacion" var="urlEjemplo3" />
 <c:url value="/catalogos/producto/paginacion" var="urlEjemplo4" /> 
+<c:url value="/catalogos/producto/links" var="urlEjemplo5" /> 
 
 <html>
 	<head>
@@ -16,7 +17,8 @@
 				<a id="urlEjemplo1" href="${urlEjemplo1}">Ejemplo1</a>
 				<a id="urlEjemplo2" href="${urlEjemplo2}">Ejemplo2</a>
 				<a id="urlEjemplo3" href="${urlEjemplo3}">Ordenación</a>
-				<a id="urlEjemplo4" href="${urlEjemplo4}">Paginación</a> 
+				<a id="urlEjemplo4" href="${urlEjemplo4}">Paginación</a>
+				<a id="urlEjemplo5" href="${urlEjemplo5}">Links</a>  
 			</div>			
 		</div>
 	</body>

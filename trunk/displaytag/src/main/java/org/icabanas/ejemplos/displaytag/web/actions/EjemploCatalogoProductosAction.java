@@ -26,6 +26,10 @@ public class EjemploCatalogoProductosAction {
 		return _ejemplo(); 
 	}
 	
+	public String links(){ 
+        return _ejemplo(); 
+	}
+	
 	private String _ejemplo() {
 		List<Producto> productos = getProductos();
 		
@@ -37,14 +41,14 @@ public class EjemploCatalogoProductosAction {
 	private List<Producto> getProductos() {
 		List<Producto> resultado = new ArrayList<Producto>();
 		
-		resultado.add(new Producto("1","producto1","descripcion1"));
-		resultado.add(new Producto("2","producto2","descripcion2"));
-		resultado.add(new Producto("3","producto3","descripcion3"));
-		resultado.add(new Producto("4","producto4","descripcion4"));
-		resultado.add(new Producto("5","producto5","descripcion5"));
-		resultado.add(new Producto("6","producto6","descripcion6"));
-		resultado.add(new Producto("7","producto7","descripcion7"));
-		
+		 resultado.add(new Producto("1","producto1","descripcion1","http://www.google.es")); 
+         resultado.add(new Producto("2","producto2","descripcion2","http://www.google.es")); 
+         resultado.add(new Producto("3","producto3","descripcion3","http://www.google.es")); 
+         resultado.add(new Producto("4","producto4","descripcion4","http://www.google.es")); 
+         resultado.add(new Producto("5","producto5","descripcion5","http://www.google.es")); 
+         resultado.add(new Producto("6","producto6","descripcion6","http://www.google.es")); 
+         resultado.add(new Producto("7","producto7","descripcion7","http://www.google.es")); 
+         
 		return resultado;
 	}
 }
