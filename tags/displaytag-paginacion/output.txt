@@ -1,0 +1,66 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building displaytag 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> jetty-maven-plugin:7.2.1.v20101111:run-war (default-cli) @ displaytag >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ displaytag ---
+[debug] execute contextualize
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ displaytag ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ displaytag ---
+[debug] execute contextualize
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ displaytag ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ displaytag ---
+[INFO] Surefire report directory: C:\AEAT\isma\desarrollo\desarrollomaven\workspace\displaytag\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-war-plugin:2.1.1:war (default-war) @ displaytag ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [displaytag] in [C:\AEAT\isma\desarrollo\desarrollomaven\workspace\displaytag\target\displaytag-0.0.1-SNAPSHOT]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\AEAT\isma\desarrollo\desarrollomaven\workspace\displaytag\src\main\webapp]
+[INFO] Webapp assembled in [1092 msecs]
+[INFO] Building war: C:\AEAT\isma\desarrollo\desarrollomaven\workspace\displaytag\target\displaytag-0.0.1-SNAPSHOT.war
+[WARNING] Warning: selected war files include a WEB-INF/web.xml which will be ignored 
+(webxml attribute is missing from war task, or ignoreWebxml attribute is specified as 'true')
+[INFO] 
+[INFO] <<< jetty-maven-plugin:7.2.1.v20101111:run-war (default-cli) @ displaytag <<<
+[INFO] 
+[INFO] --- jetty-maven-plugin:7.2.1.v20101111:run-war (default-cli) @ displaytag ---
+[INFO] Configuring Jetty for project: displaytag
+[INFO] Context path = /displaytag
+[INFO] Tmp directory = C:\AEAT\isma\desarrollo\desarrollomaven\workspace\displaytag\target\tmp
+[INFO] Web defaults = org/eclipse/jetty/webapp/webdefault.xml
+[INFO] Web overrides =  none
+[INFO] Starting jetty 7.2.1.v20101111 ...
+[INFO] Started Jetty Server
+[INFO] Starting scanner at interval of 10 seconds.
+[INFO] Jetty server exiting.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3:34.640s
+[INFO] Finished at: Mon Feb 11 17:58:03 CET 2013
+[INFO] Final Memory: 8M/20M
+[INFO] ------------------------------------------------------------------------
+¨Desea terminar el trabajo por lotes (S/N)? 
