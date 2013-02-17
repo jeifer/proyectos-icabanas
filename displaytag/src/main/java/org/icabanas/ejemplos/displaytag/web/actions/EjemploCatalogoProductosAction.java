@@ -22,6 +22,10 @@ public class EjemploCatalogoProductosAction {
 		return _ejemplo();
 	}
 
+	public String paginacion(){ 
+		return _ejemplo(); 
+	}
+	
 	private String _ejemplo() {
 		List<Producto> productos = getProductos();
 		
