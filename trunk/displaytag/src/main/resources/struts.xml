@@ -37,6 +37,10 @@
 				method="ordenacion"> 
 			<result name="success">/WEB-INF/jsp/catalogos/productos/ordenacion.jsp</result> 
 		</action>
+		<action name="paginacion" class="org.icabanas.ejemplos.displaytag.web.actions.EjemploCatalogoProductosAction" 
+                        method="paginacion"> 
+                <result name="success">/WEB-INF/jsp/catalogos/productos/paginacion.jsp</result> 
+        </action> 
 	</package> 
 	
 </struts>
